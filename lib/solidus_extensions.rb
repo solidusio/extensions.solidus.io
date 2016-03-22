@@ -8,6 +8,10 @@ module SolidusExtensions
       @name = name
     end
 
+    def shortname
+      name[/\/(.*)/, 1]
+    end
+
     def travis_repo
       Travis::Repository.find(name)
     end
@@ -21,8 +25,8 @@ module SolidusExtensions
         job.config['env'][/SOLIDUS_BRANCH=(\S+)/, 1]
       end.map do |(version, builds)|
         [version, builds.all?(&:passed?)]
-      end
-    rescue Travis::Client::Error => e
+      end.to_h
+    rescue Travis::Client::Error
       {}
     end
 

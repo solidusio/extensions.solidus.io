@@ -1,0 +1,68 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #373a3c;
+    }
+    table {
+      width: 960px;
+      margin: auto;
+      border-collapse: separate;
+      border-spacing: 12px 5px;
+    }
+    td, th {
+      text-align: left;
+      padding: .75rem;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+    th.name {
+      text-align: right;
+    }
+    .status {
+      color: white;
+    }
+    .success {
+      background-color: #60b541;
+    }
+    .unsupported {
+      background-color: #e5d152;
+    }
+    .failed {
+      background-color: #c82626;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <% VERSIONS.each do |version| %>
+          <th>Solidus <%= version %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% PROJECTS.each do |project| %>
+        <tr>
+          <th class="name"><%= project.shortname %></td>
+          <% VERSIONS.each do |version| %>
+            <% state = project.state_by_version[version] %>
+            <% if state.nil? %>
+              <td class="status unsupported">unsupported</td>
+            <% elsif state %>
+              <td class="status success">passed</td>
+            <% else %>
+              <td class="status failed">failed</td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</body>
+</html>
