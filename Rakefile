@@ -16,6 +16,9 @@ PROJECTS = %W[
   solidusio/solidus_braintree
   solidusio/solidus_avatax
   solidusio/solidus_signifyd
+
+  solidusio-contrib/solidus_social
+  solidusio-contrib/solidus_related_products
 ].map{|name| SolidusExtensions::Project.new(name) }
 
 task :retrigger do
