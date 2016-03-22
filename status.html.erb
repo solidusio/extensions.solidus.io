@@ -34,6 +34,13 @@
     .failed {
       background-color: #c82626;
     }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -49,7 +56,9 @@
     <tbody>
       <% PROJECTS.each do |project| %>
         <tr>
-          <th class="name"><%= project.shortname %></td>
+          <th class="name">
+            <a href="<%= project.github_url %>"><%= project.shortname %></a>
+          </th>
           <% VERSIONS.each do |version| %>
             <% state = project.state_by_version[version] %>
             <% if state.nil? %>

@@ -8,6 +8,14 @@ module SolidusExtensions
       @name = name
     end
 
+    def github_url
+      "https://github.com/#{name}"
+    end
+
+    def travis_url
+      "https://travis-ci.org/#{name}"
+    end
+
     def shortname
       name[/\/(.*)/, 1]
     end
