@@ -29,7 +29,6 @@
       background-color: #60b541;
     }
     .unsupported {
-      background-color: #e5d152;
     }
     .failed {
       background-color: #c82626;
@@ -48,6 +47,7 @@
     <thead>
       <tr>
         <th></th>
+        <th></th>
         <% VERSIONS.each do |version| %>
           <th>Solidus <%= version %></th>
         <% end %>
@@ -55,21 +55,27 @@
     </thead>
     <tbody>
       <% PROJECTS.each do |project| %>
+        <% branches = project.branches %>
         <tr>
-          <th class="name">
+          <th class="name" rowspan="<%= branches.size + 1%>">
             <a href="<%= project.github_url %>"><%= project.shortname %></a>
           </th>
-          <% VERSIONS.each do |version| %>
-            <% state = project.state_by_version[version] %>
-            <% if state.nil? %>
-              <td class="status unsupported">unsupported</td>
-            <% elsif state %>
-              <td class="status success">passed</td>
-            <% else %>
-              <td class="status failed">failed</td>
-            <% end %>
-          <% end %>
         </tr>
+        <% branches.each do |branch| %>
+          <tr>
+            <td><%= branch.name %></td>
+            <% VERSIONS.each do |version| %>
+              <% state = branch.last_build.state_by_version[version] %>
+              <% if state.nil? %>
+                <td class="status unsupported"></td>
+              <% elsif state %>
+                <td class="status success">2/2</td>
+              <% else %>
+                <td class="status failed">0/2</td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

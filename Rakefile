@@ -30,8 +30,11 @@ end
 task :status do
   PROJECTS.each do |project|
     puts project.name
-    project.state_by_version.each do |version, state|
-      puts "   #{version} #{state}"
+    project.branches.each do |branch|
+      puts "  #{branch.name}"
+      branch.last_build.state_by_version.each do |version, state|
+        puts "    #{version} #{state}"
+      end
     end
   end
 end
