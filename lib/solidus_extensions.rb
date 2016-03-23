@@ -6,7 +6,7 @@ module SolidusExtensions
 
   class Job
     extend Forwardable
-    def_delegators :@job, :passed?, :failed?
+    def_delegators :@job, :passed?, :failed?, :pending?
 
     def initialize(job)
       @job = job
@@ -23,6 +23,10 @@ module SolidusExtensions
 
     def jobs
       @jobs ||= @build.jobs.map { |job| Job.new(job) }
+    end
+
+    def jobs_for(solidus_version:)
+      jobs.select { |job| job.solidus_version == solidus_version }
     end
 
     def jobs_by_version

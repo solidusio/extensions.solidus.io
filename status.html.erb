@@ -28,6 +28,9 @@
     .success {
       background-color: #60b541;
     }
+    .pending {
+      background-color: #909BD4;
+    }
     .unsupported {
     }
     .failed {
@@ -65,13 +68,15 @@
           <tr>
             <td><%= branch.name %></td>
             <% VERSIONS.each do |version| %>
-              <% state = branch.last_build.state_by_version[version] %>
-              <% if state.nil? %>
+              <% jobs = branch.last_build.jobs_for(solidus_version: version) %>
+              <% if jobs.none? %>
                 <td class="status unsupported"></td>
-              <% elsif state %>
-                <td class="status success">2/2</td>
+              <% elsif jobs.any?(&:pending?) %>
+                <td class="status pending">pending</td>
+              <% elsif jobs.all?(&:passed?) %>
+                <td class="status success">passed</td>
               <% else %>
-                <td class="status failed">0/2</td>
+                <td class="status failed">failed</td>
               <% end %>
             <% end %>
           </tr>
