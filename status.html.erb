@@ -68,15 +68,16 @@
           <tr>
             <td><%= branch.name %></td>
             <% VERSIONS.each do |version| %>
+              <% build = branch.last_build %>
               <% jobs = branch.last_build.jobs_for(solidus_version: version) %>
               <% if jobs.none? %>
                 <td class="status unsupported"></td>
               <% elsif jobs.any?(&:pending?) %>
-                <td class="status pending">pending</td>
+                <td class="status pending"><a href="<%= build.url %>">pending</a></td>
               <% elsif jobs.all?(&:passed?) %>
-                <td class="status success">passed</td>
+                <td class="status success"><a href="<%= build.url %>">passed</a></td>
               <% else %>
-                <td class="status failed">failed</td>
+                <td class="status failed"><a href="<%= build.url %>">failed</a></td>
               <% end %>
             <% end %>
           </tr>

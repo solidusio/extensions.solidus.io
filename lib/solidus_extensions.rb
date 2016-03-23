@@ -17,8 +17,13 @@ module SolidusExtensions
     end
   end
   class Build
-    def initialize(build)
+    def initialize(project, build)
+      @project = project
       @build = build
+    end
+
+    def url
+      "#{@project.travis_url}/builds/#{@build.id}"
     end
 
     def jobs
@@ -42,18 +47,23 @@ module SolidusExtensions
     end
   end
   class Branch
-    attr_reader :project, :name, :last_build
-    def initialize(project, name, last_build)
+    attr_reader :project, :name
+    def initialize(project, name)
       @project = project
       @name = name
       @last_build = last_build
+    end
+
+    def last_build
+      @last_build ||= Build.new(@project, @project.travis_repo.branch(@name))
     end
   end
   class Project
     attr_reader :name
 
-    def initialize(name)
+    def initialize(name, branches=['master'])
       @name = name
+      @branches = branches
     end
 
     def github_url
@@ -69,10 +79,9 @@ module SolidusExtensions
     end
 
     def branches
-      travis_repo.branches.map do |name, last_build|
-        next unless name =~ BRANCH_REGEX
-        Branch.new(self, name, Build.new(last_build))
-      end.compact
+      @branches.map do |name|
+        Branch.new(self, name)
+      end
     end
 
     def travis_repo
@@ -80,7 +89,7 @@ module SolidusExtensions
     end
 
     def last_build
-      Build.new(travis_repo.branch('master'))
+      Build.new(self, travis_repo.branch('master'))
     end
 
     def state_by_version
