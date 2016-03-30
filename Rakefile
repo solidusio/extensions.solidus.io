@@ -14,11 +14,11 @@ PROJECTS = {
   'solidusio/solidus_legacy_return_authorizations'  => %w[master],
   'solidusio/solidus_virtual_gift_card'             => %w[master],
   'solidusio/solidus_braintree'                     => %w[master],
-  'solidusio/solidus_avatax'                        => %w[master],
+  'solidusio/solidus_avatax'                        => %w[master v1.1],
   'solidusio/solidus_signifyd'                      => %w[master],
 
   'solidusio-contrib/solidus_i18n'                  => %w[master],
-  #'solidusio-contrib/solidus_globalize'             => %w[master],
+  'solidusio-contrib/solidus_globalize'             => %w[master],
   'solidusio-contrib/solidus_social'                => %w[master],
   'solidusio-contrib/solidus_related_products'      => %w[master],
   'solidusio-contrib/solidus_easypost'              => %w[master],
