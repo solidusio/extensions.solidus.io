@@ -1,5 +1,6 @@
 require 'travis'
 require 'forwardable'
+require 'cgi'
 
 module SolidusExtensions
   BRANCH_REGEX = /\Amaster\Z|\Av\d+.\d+\Z/.freeze
@@ -105,7 +106,7 @@ module SolidusExtensions
         branch: 'master',
         message: "Automatic retrigger"
       }
-      r = session.post("/repo/solidusio%2Fsolidus_auth_devise/requests", request: request)
+      r = session.post("/repo/#{CGI.escape(name)}/requests", request: request)
       pp r
     end
   end
