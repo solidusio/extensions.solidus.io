@@ -23,7 +23,7 @@ PROJECTS = {
   'solidusio-contrib/solidus_related_products'      => %w[master],
   'solidusio-contrib/solidus_easypost'              => %w[master],
   'solidusio-contrib/solidus_editor'                => %w[master],
-  #'solidusio-contrib/solidus_paypal_express'        => %w[master],
+  'solidusio-contrib/solidus_paypal_express'        => %w[master],
 }.map{|name, branches| SolidusExtensions::Project.new(name, branches) }
 
 task :retrigger do
