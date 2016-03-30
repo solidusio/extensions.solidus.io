@@ -1,0 +1,97 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #373a3c;
+  box-sizing: border-box;
+}
+
+.content {
+  max-width: 960px;
+  margin: 2em auto;
+}
+table.statuses {
+  border-collapse: separate;
+  border-spacing: 12px 5px;
+  margin: 2em 0 5em;
+}
+td, th {
+  text-align: left;
+  line-height: 1.5;
+  vertical-align: top;
+  padding: .5rem;
+}
+th.name {
+  text-align: right;
+}
+.status {
+  color: white;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+}
+.status a {
+  display: block;
+  padding: .5rem;
+  width: 100%;
+}
+.status a:hover {
+  text-decoration: none;
+}
+.success a {
+  background-color: #60b541;
+}
+.pending a {
+  background-color: #909BD4;
+}
+.failed a {
+  background-color: #c82626;
+}
+.success a:hover {
+  background-color: #427d2d;
+}
+.pending a:hover {
+  background-color: #5969bf;
+}
+.failed a:hover {
+  background-color: #881a1a;
+}
+.status a, .status a:visited {
+  color: inherit;
+}
+a {
+  text-decoration: none;
+}
+a, a:visited {
+  color: #4078c0;
+}
+a:hover {
+  text-decoration: underline;
+}
+p {
+  color: #666;
+}
+.status {
+  text-transform: uppercase; font-size: .75em;
+}
+th.version {
+  text-align: center;
+}
+.version, .status {
+  width: 15%;
+}
+p, table {
+  font-size: 14px;
+}
+h1 {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: normal;
+  color: #333;
+  margin: 0;
+}
+

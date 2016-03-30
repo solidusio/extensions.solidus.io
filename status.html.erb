@@ -1,89 +1,66 @@
 <html>
 <head>
-  <style>
-    body {
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #373a3c;
-    }
-    table {
-      width: 960px;
-      margin: auto;
-      border-collapse: separate;
-      border-spacing: 12px 5px;
-    }
-    td, th {
-      text-align: left;
-      padding: .75rem;
-      line-height: 1.5;
-      vertical-align: top;
-    }
-    th.name {
-      text-align: right;
-    }
-    .status {
-      color: white;
-    }
-    .success {
-      background-color: #60b541;
-    }
-    .pending {
-      background-color: #909BD4;
-    }
-    .unsupported {
-    }
-    .failed {
-      background-color: #c82626;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <% VERSIONS.each do |version| %>
-          <th>Solidus <%= version %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% PROJECTS.each do |project| %>
-        <% branches = project.branches %>
+  <div class="content">
+    <div class="header">
+      <h1>Solidus extension compatibility</h1>
+      <p>
+        These extensions are maintained by solidus core team and community. They can be found in the
+        <a href="https://github.com/solidusio">solidusio</a>
+        and
+        <a href="https://github.com/solidusio-contrib">solidusio-contrib</a>
+        github organizations.
+        These gems regularly have their tests re-run to ensure everything remains compatible.
+      </p>
+      <p>
+        You might also want to check out <a href="http://soliton.nebulab.it/">Soliton</a>, a solidus extension search coutesy of <a href="http://nebulab.it/">Nebulab</a>.
+      </p>
+      <p>
+        One of the goals of Solidus is to have a single extension versions work across several versions of solidus. This is how we're doing:
+      </p>
+    </div>
+
+    <table class="statuses">
+      <thead>
         <tr>
-          <th class="name" rowspan="<%= branches.size + 1%>">
-            <a href="<%= project.github_url %>"><%= project.shortname %></a>
-          </th>
+          <th></th>
+          <th></th>
+          <% VERSIONS.each do |version| %>
+            <th class="version">Solidus <%= version %></th>
+          <% end %>
         </tr>
-        <% branches.each do |branch| %>
-          <tr>
-            <td><%= branch.name %></td>
-            <% VERSIONS.each do |version| %>
-              <% build = branch.last_build %>
-              <% jobs = branch.last_build.jobs_for(solidus_version: version) %>
-              <% if jobs.none? %>
-                <td class="status unsupported"></td>
-              <% elsif jobs.any?(&:pending?) %>
-                <td class="status pending"><a href="<%= build.url %>">pending</a></td>
-              <% elsif jobs.all?(&:passed?) %>
-                <td class="status success"><a href="<%= build.url %>">passed</a></td>
-              <% else %>
-                <td class="status failed"><a href="<%= build.url %>">failed</a></td>
+      </thead>
+      <tbody>
+        <% PROJECTS.each do |project| %>
+          <% branches = project.branches %>
+          <% branches.each_with_index do |branch, i| %>
+            <tr>
+              <% if i == 0 %>
+                <th class="name" rowspan="<%= branches.size %>">
+                  <a href="<%= project.github_url %>"><%= project.shortname %></a>
+                </th>
               <% end %>
-            <% end %>
-          </tr>
+              <td><%= branch.name %></td>
+              <% VERSIONS.each do |version| %>
+                <% build = branch.last_build %>
+                <% jobs = branch.last_build.jobs_for(solidus_version: version) %>
+                <% if jobs.none? %>
+                  <td class="status unsupported"></td>
+                <% elsif jobs.any?(&:pending?) %>
+                  <td class="status pending"><a href="<%= build.url %>">pending</a></td>
+                <% elsif jobs.all?(&:passed?) %>
+                  <td class="status success"><a href="<%= build.url %>">passed</a></td>
+                <% else %>
+                  <td class="status failed"><a href="<%= build.url %>">failed</a></td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
