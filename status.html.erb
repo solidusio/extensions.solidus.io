@@ -24,7 +24,7 @@
 
     <table class="statuses">
       <thead>
-        <tr>
+        <tr data-sticky-header>
           <th></th>
           <th></th>
           <% VERSIONS.each do |version| %>
@@ -65,5 +65,7 @@
   <footer>
     Last updated <%= Time.now.utc.to_s %>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
