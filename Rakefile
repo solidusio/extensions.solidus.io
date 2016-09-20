@@ -23,7 +23,6 @@ PROJECTS = {
   'solidusio-contrib/solidus_related_products'      => %w[master],
   'solidusio-contrib/solidus_easypost'              => %w[master],
   'solidusio-contrib/solidus_editor'                => %w[master],
-  'solidusio-contrib/solidus_paypal_express'        => %w[master],
   'solidusio-contrib/solidus_active_shipping'       => %w[master],
   'solidusio-contrib/solidus_product_assembly'      => %w[master],
   'solidusio-contrib/solidus_print_invoice'         => %w[master],
