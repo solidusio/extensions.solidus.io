@@ -33,6 +33,7 @@ PROJECTS = {
   'solidusio-contrib/solidus_sitemap'               => %w[master],
   'solidusio-contrib/solidus_static_content'        => %w[master],
   'solidusio-contrib/solidus_trackers'              => %w[master],
+  'solidusio-contrib/solidus_prototypes'            => %w[master],
 }.map{|name, branches| SolidusExtensions::Project.new(name, branches) }
 
 task :retrigger do
