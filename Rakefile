@@ -34,10 +34,16 @@ PROJECTS = {
   'solidusio-contrib/solidus_static_content'        => %w[master],
   'solidusio-contrib/solidus_trackers'              => %w[master],
   'solidusio-contrib/solidus_prototypes'            => %w[master],
+
+  'boomerdigital/solidus_wishlist'                  => %w[master],
+  'boomerdigital/solidus_email_to_friend'           => %w[master],
+  'boomerdigital/solidus_user_roles'                => %w[master],
+  'boomerdigital/solidus_amazon_payments'           => %w[master],
 }.map{|name, branches| SolidusExtensions::Project.new(name, branches) }
 
 task :retrigger do
   PROJECTS.each do |project|
+    next unless project =~ /\Asolidusio/
     project.retrigger
   end
 end
