@@ -34,6 +34,7 @@ PROJECTS = {
   'solidusio-contrib/solidus_static_content'        => %w[master],
   'solidusio-contrib/solidus_trackers'              => %w[master],
   'solidusio-contrib/solidus_prototypes'            => %w[master],
+  'solidusio-contrib/solidus_subscriptions'         => %w[master],
 
   'boomerdigital/solidus_wishlist'                  => %w[master],
   'boomerdigital/solidus_email_to_friend'           => %w[master],
