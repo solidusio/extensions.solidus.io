@@ -1,10 +1,23 @@
 <html>
 <head>
-<link rel="stylesheet" href="style.css" />
+  <link href="https://solidus.io/stylesheets/solidus-90f13851.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <div class="content">
-    <div class="header">
+    <header class="main-header" role="banner">
+      <nav class="main-nav">
+        <a class="logo" href="/">
+          <img src="https://solidus.io/images/solidus-logo-c57cc28c.png">
+        </a>
+        <ul>
+          <li><a href="https://solidus.io/blog">Blog</a></li>
+          <li><a href="https://github.com/solidusio/solidus/wiki/FAQ">FAQ</a></li>
+          <li><a href="http://docs.solidus.io/">Documentation</a></li>
+          <li><a href="https://github.com/solidusio/solidus">Github</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="main-content" role="main">
       <h1>Solidus extension compatibility</h1>
       <p>
         These extensions are maintained by solidus core team and community. They can be found in the
@@ -20,50 +33,66 @@
       <p>
         One of the goals of Solidus is to have a single extension versions work across several versions of solidus. This is how we're doing:
       </p>
-    </div>
-
-    <table class="statuses">
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <% VERSIONS.each do |version| %>
-            <th class="version">Solidus <%= version %></th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <% PROJECTS.each do |project| %>
-          <% branches = project.branches %>
-          <% branches.each_with_index do |branch, i| %>
-            <tr>
-              <% if i == 0 %>
-                <th class="name" rowspan="<%= branches.size %>">
-                  <a href="<%= project.github_url %>"><%= project.shortname %></a>
-                </th>
-              <% end %>
-              <td><%= branch.name %></td>
-              <% VERSIONS.each do |version| %>
-                <% build = branch.last_build %>
-                <% jobs = branch.last_build.jobs_for(solidus_version: version) %>
-                <% if jobs.none? %>
-                  <td class="status unsupported"></td>
-                <% elsif jobs.any?(&:pending?) %>
-                  <td class="status pending"><a href="<%= build.url %>">pending</a></td>
-                <% elsif jobs.all?(&:passed?) %>
-                  <td class="status success"><a href="<%= build.url %>">passed</a></td>
-                <% else %>
-                  <td class="status failed"><a href="<%= build.url %>">failed</a></td>
+      <table class="statuses">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <% VERSIONS.each do |version| %>
+              <th class="version">Solidus <%= version %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% PROJECTS.each do |project| %>
+            <% branches = project.branches %>
+            <% branches.each_with_index do |branch, i| %>
+              <tr>
+                <% if i == 0 %>
+                  <th class="name" rowspan="<%= branches.size %>">
+                    <a href="<%= project.github_url %>"><%= project.shortname %></a>
+                  </th>
                 <% end %>
-              <% end %>
-            </tr>
+                <td><%= branch.name %></td>
+                <% VERSIONS.each do |version| %>
+                  <% build = branch.last_build %>
+                  <% jobs = branch.last_build.jobs_for(solidus_version: version) %>
+                  <% if jobs.none? %>
+                    <td class="status unsupported"></td>
+                  <% elsif jobs.any?(&:pending?) %>
+                    <td class="status pending"><a href="<%= build.url %>">pending</a></td>
+                  <% elsif jobs.all?(&:passed?) %>
+                    <td class="status success"><a href="<%= build.url %>">passed</a></td>
+                  <% else %>
+                    <td class="status failed"><a href="<%= build.url %>">failed</a></td>
+                  <% end %>
+                <% end %>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <footer>
-    Last updated <%= Time.now.utc.to_s %>
-  </footer>
-</body>
+        </tbody>
+      </table>
+      <div class="updated-at">
+        Last updated <%= Time.now.utc.to_s %>
+      </div>
+    </div>
+    <div class="main-footer-wrapper">
+      <footer class="main-footer">
+        <div class="footer-tagline">
+          <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+          <svg class="solidus-mark" viewBox="0 0 88 141" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="solidus-mark">
+              <path d="M54.9134,99.3973 C51.5314,97.4343 50.2004,95.2633 50.0384,89.6093 L50.0384,50.4973 C50.0384,38.7743 44.2354,34.4783 31.8174,28.5613 L26.4774,38.0773 L32.9774,41.7913 C36.3594,43.7553 37.6934,45.9263 37.8524,51.5803 L37.8524,90.6923 C37.8524,102.4153 43.6564,106.7083 56.0734,112.6273 L61.4144,103.1123 L54.9134,99.3973 Z"></path>
+              <path d="M13.107,127.478 L74.785,127.478 L74.785,13.284 L13.107,13.284 L13.107,127.478 Z M87.331,140.024 L0.56,140.024 L0.56,0.737 L87.331,0.737 L87.331,140.024 Z"></path>
+            </g>
+          </svg>
+          <h3>Solidus is an open source, ecommerce application for high volume retailers.</h3>
+        </div>
+        <div class="footer-cta">
+          <a class="button button-secondary" href="http://docs.solidus.io/">Documentation</a>
+          <a class="button" href="https://github.com/solidusio/solidus">Github</a>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
