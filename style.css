@@ -1,34 +1,31 @@
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
-body {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #373a3c;
-  box-sizing: border-box;
-}
-
 .content {
-  max-width: 960px;
   margin: 2em auto;
 }
 table.statuses {
   border-collapse: separate;
   border-spacing: 12px 5px;
+  border: 0 none;
   margin: 2em 0 5em;
 }
-td, th {
+table.statuses thead, table.statuses tr {
+  background-color: transparent;
+}
+table.statuses th.version {
+  text-align: center;
+}
+table.statuses td, table.statuses th {
   text-align: left;
   line-height: 1.5;
   vertical-align: top;
   padding: .5rem;
 }
-th.name {
+table.statuses th.name {
   text-align: right;
 }
-.status {
+table.statuses .status {
   color: white;
   padding: 0;
   vertical-align: middle;
@@ -38,6 +35,7 @@ th.name {
   display: block;
   padding: .5rem;
   width: 100%;
+  text-decoration: none;
 }
 .status a:hover {
   text-decoration: none;
@@ -63,39 +61,12 @@ th.name {
 .status a, .status a:visited {
   color: inherit;
 }
-a {
-  text-decoration: none;
-}
-a, a:visited {
-  color: #4078c0;
-}
-a:hover {
-  text-decoration: underline;
-}
-p {
-  color: #666;
-}
 .status {
   text-transform: uppercase; font-size: .75em;
-}
-th.version {
-  text-align: center;
 }
 .version, .status {
   width: 15%;
 }
-p, table {
-  font-size: 14px;
-}
-h1 {
-  font-size: 36px;
-  line-height: 1.2;
-  font-weight: normal;
-  color: #333;
-  margin: 0;
-}
-footer {
-  font-size: 14px;
+.updated-at {
   text-align: center;
-  color: grey;
 }
