@@ -45,7 +45,7 @@ PROJECTS = {
 
 task :retrigger do
   PROJECTS.each do |project|
-    next unless project =~ /\Asolidusio/
+    next unless project.name =~ /\Asolidusio/
     project.retrigger
   end
 end
