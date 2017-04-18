@@ -5,7 +5,7 @@ require 'pry'
 
 Travis.access_token = ENV['TRAVIS_TOKEN']
 
-VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 master]
+VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 master]
 PROJECTS = {
   'solidusio/solidus_auth_devise'                   => %w[master],
   'solidusio/solidus_gateway'                       => %w[master v1.0 v0.9],
