@@ -45,6 +45,7 @@ PROJECTS = {
   'boomerdigital/solidus_shipstation'               => %w[master],
   'boomerdigital/solidus_flexi_variants'            => %w[master],
   'boomerdigital/solidus_avatax_certified'          => %w[master v2.1],
+  'boomerdigital/solidus_elastic_product'           => %w[master],
 }.map{|name, branches| SolidusExtensions::Project.new(name, branches) }
 
 task :retrigger do
