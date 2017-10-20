@@ -14,6 +14,7 @@ PROJECTS = {
   'solidusio/solidus_legacy_return_authorizations'  => %w[master],
   'solidusio/solidus_virtual_gift_card'             => %w[master],
   'solidusio/solidus_braintree'                     => %w[master],
+  'solidusio/solidus_paypal_braintree'              => %w[master],
   'solidusio/solidus_avatax'                        => %w[master v1.1],
   'solidusio/solidus_signifyd'                      => %w[master],
 
