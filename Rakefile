@@ -40,6 +40,7 @@ PROJECTS = {
   'solidusio-contrib/solidus_volume_pricing'        => %w[master],
   'solidusio-contrib/solidus_legacy_stock_system'   => %w[master],
   'solidusio-contrib/solidus_affirm'                => %w[master],
+  'solidusio-contrib/solidus_tax_cloud'             => %w[master],
 
   'boomerdigital/solidus_wishlist'                  => %w[master],
   'boomerdigital/solidus_email_to_friend'           => %w[master],
