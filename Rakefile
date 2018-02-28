@@ -13,7 +13,6 @@ PROJECTS = {
   'solidusio/solidus_multi_domain'                  => %w[master],
   'solidusio/solidus_asset_variant_options'         => %w[master],
   'solidusio/solidus_legacy_return_authorizations'  => %w[master],
-  'solidusio/solidus_virtual_gift_card'             => %w[master],
   'solidusio/solidus_braintree'                     => %w[master],
   'solidusio/solidus_paypal_braintree'              => %w[master],
   'solidusio/solidus_avatax'                        => %w[master],
