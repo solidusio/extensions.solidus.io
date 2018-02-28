@@ -9,14 +9,14 @@ OLD_VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0]
 VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3 v2.4 v2.5 master]
 PROJECTS = {
   'solidusio/solidus_auth_devise'                   => %w[master],
-  'solidusio/solidus_gateway'                       => %w[master v1.0 v0.9],
-  'solidusio/solidus_multi_domain'                  => %w[master v1.0],
+  'solidusio/solidus_gateway'                       => %w[master],
+  'solidusio/solidus_multi_domain'                  => %w[master],
   'solidusio/solidus_asset_variant_options'         => %w[master],
   'solidusio/solidus_legacy_return_authorizations'  => %w[master],
   'solidusio/solidus_virtual_gift_card'             => %w[master],
   'solidusio/solidus_braintree'                     => %w[master],
   'solidusio/solidus_paypal_braintree'              => %w[master],
-  'solidusio/solidus_avatax'                        => %w[master v1.1],
+  'solidusio/solidus_avatax'                        => %w[master],
   'solidusio/solidus_signifyd'                      => %w[master],
 
   'solidusio-contrib/solidus_i18n'                  => %w[master],
