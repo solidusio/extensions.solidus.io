@@ -99,3 +99,7 @@ footer {
   text-align: center;
   color: grey;
 }
+
+#showOld:not(:checked) + .statuses .hide-old {
+  display: none;
+}
