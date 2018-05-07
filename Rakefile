@@ -18,7 +18,7 @@ PROJECTS = {
   'solidusio/solidus_avatax'                        => %w[master],
   'solidusio/solidus_signifyd'                      => %w[master],
 
-  'solidusio-contrib/solidus_i18n'                  => %w[master],
+  'solidusio/solidus_i18n'                          => %w[master],
   'solidusio-contrib/solidus_globalize'             => %w[master],
   'solidusio-contrib/solidus_social'                => %w[master],
   'solidusio-contrib/solidus_related_products'      => %w[master],
