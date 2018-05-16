@@ -55,15 +55,18 @@
                   classes = ["status"]
                   classes << "hide-old" if OLD_VERSIONS.include?(version)
                   classes = classes.join(" ")
+
+                  started_at = jobs.map(&:started_at).min
+                  finished_at = jobs.map(&:finished_at).max
                 %>
                 <% if jobs.none? %>
                   <td class="<%= classes %> unsupported"></td>
                 <% elsif jobs.any?(&:pending?) %>
-                  <td class="<%= classes %> pending"><a href="<%= build.url %>">pending</a></td>
+                  <td class="<%= classes %> pending" title="started building at <%= started_at %>"><a href="<%= build.url %>">pending</a></td>
                 <% elsif jobs.all?(&:passed?) %>
-                  <td class="<%= classes %> success"><a href="<%= build.url %>">passed</a></td>
+                  <td class="<%= classes %> success" title="passed at <%= finished_at %>"><a href="<%= build.url %>">passed</a></td>
                 <% else %>
-                  <td class="<%= classes %> failed"><a href="<%= build.url %>">failed</a></td>
+                  <td class="<%= classes %> failed" title="failed at <%= finished_at %>"><a href="<%= build.url %>">failed</a></td>
                 <% end %>
               <% end %>
             </tr>

@@ -7,7 +7,7 @@ module SolidusExtensions
 
   class Job
     extend Forwardable
-    def_delegators :@job, :passed?, :failed?, :pending?
+    def_delegators :@job, :passed?, :failed?, :pending?, :finished_at, :started_at
 
     def initialize(job)
       @job = job
