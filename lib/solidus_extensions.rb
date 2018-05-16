@@ -89,6 +89,13 @@ module SolidusExtensions
       Travis::Repository.find(name)
     end
 
+    def exists?
+      travis_repo
+      true
+    rescue Travis::Client::NotFound
+      false
+    end
+
     def last_build
       Build.new(self, travis_repo.branch('master'))
     end
