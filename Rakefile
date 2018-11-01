@@ -50,6 +50,8 @@ PROJECTS = {
   'boomerdigital/solidus_flexi_variants'            => %w[master],
   'boomerdigital/solidus_avatax_certified'          => %w[master v2.1],
   'boomerdigital/solidus_elastic_product'           => %w[master],
+   
+  'karmakatahdin/solidus_seo'                       => %w[master],
 }.map do |name, branches|
   SolidusExtensions::Project.new(name, branches)
 end.select(&:exists?)
