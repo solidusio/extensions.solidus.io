@@ -66,6 +66,7 @@ PROJECTS = {
   'solidusio-contrib/solidus_print_invoice'         => %w[master],
   'solidusio-contrib/solidus_comments'              => %w[master],
   'solidusio-contrib/solidus_reports'               => %w[master],
+  'magma-labs/solidus_simple_dash'                  => %w[master],
 
   # Log
   'solidusio-contrib/solidus_papertrail'            => %w[master],
