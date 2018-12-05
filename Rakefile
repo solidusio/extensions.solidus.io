@@ -54,6 +54,7 @@ PROJECTS = {
   'solidusio-contrib/solidus_product_feed'          => %w[master],
   'solidusio-contrib/solidus_sitemap'               => %w[master],
   'solidusio-contrib/solidus_trackers'              => %w[master],
+  'karmakatahdin/solidus_seo'                       => %w[master],
 
   # Promo
   'solidusio-contrib/solidus_volume_pricing'        => %w[master],
