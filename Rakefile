@@ -34,6 +34,7 @@ PROJECTS = {
 
   # Taxes
   'solidusio/solidus_avatax'                        => %w[master],
+  'solidusio-contrib/solidus_tax_cloud'             => %w[master],
   'boomerdigital/solidus_avatax_certified'          => %w[master v2.1],
 
   # Marketplace
