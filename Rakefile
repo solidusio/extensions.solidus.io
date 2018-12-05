@@ -15,6 +15,7 @@ PROJECTS = {
 
   # Payments
   'solidusio/solidus_gateway'                       => %w[master],
+  'solidusio-contrib/solidus_stripe'                => %w[master],
   'solidusio/solidus_braintree'                     => %w[master],
   'solidusio/solidus_paypal_braintree'              => %w[master],
   'solidusio-contrib/solidus_affirm'                => %w[master],
