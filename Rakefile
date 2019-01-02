@@ -106,3 +106,12 @@ task :status_html do
   require 'erb'
   puts ERB.new(File.read("status.html.erb")).result
 end
+
+task :build do
+  require 'erb'
+
+  File.open('index.html', "w+") do |f|
+    render = ERB.new(File.read("status.html.erb")).result
+    f.write(render)
+  end
+end
