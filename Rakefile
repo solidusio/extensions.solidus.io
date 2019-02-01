@@ -32,6 +32,9 @@ PROJECTS = {
   'solidusio/solidus_i18n'                          => %w[master],
   'solidusio-contrib/solidus_globalize'             => %w[master],
 
+  # Frontend enhancements
+  'solidusio-contrib/solidus_customer_images'       => %w[master],
+
   # Taxes
   'solidusio/solidus_avatax'                        => %w[master],
   'solidusio-contrib/solidus_tax_cloud'             => %w[master],
