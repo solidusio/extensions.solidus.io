@@ -24,6 +24,7 @@ PROJECTS = {
   'solidus_signifyd' => { org: 'solidusio' },
   'solidus_amazon_payments' => { org: 'boomerdigital' },
   'solidus_subscriptions' => { org: 'solidusio-contrib', ci: :circleci },
+  'solidus_payment_method_by_zone' => { org: 'magma-labs' },
 
   # Shipping
   'solidus_easypost' => { org: 'solidusio-contrib' },
