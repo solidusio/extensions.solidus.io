@@ -1,9 +1,11 @@
 $LOAD_PATH << File.expand_path('../lib', __FILE__)
 
 require 'solidus_extensions'
+require 'circleci_solidus_extensions'
 require 'pry'
 
 Travis.access_token = ENV['TRAVIS_TOKEN']
+CircleCi.configure { |config| config.token = ENV['CIRCLECI_TOKEN'] }
 
 OLD_VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3]
 VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3 v2.4 v2.5 v2.6 v2.7 v2.8 master]
@@ -86,6 +88,12 @@ PROJECTS = {
   SolidusExtensions::Project.new(name, branches)
 end.select(&:exists?)
 
+CIRCLECI_PROJECTS = {
+  'solidus_auth_devise' => { org: 'solidusio', branches: %w[kennyadsl/circleci] },
+}.map do |repo, options|
+  SolidusExtensions::CircleCi::Project.new(options[:org], repo, options[:branches])
+end.select(&:exists?)
+
 task :retrigger do
   PROJECTS.each do |project|
     next unless project.name =~ /\Asolidusio/
@@ -110,11 +118,17 @@ task :status_html do
   puts ERB.new(File.read("status.html.erb")).result
 end
 
+
 task :build do
   require 'erb'
 
   File.open('index.html', "w+") do |f|
     render = ERB.new(File.read("status.html.erb")).result
+    f.write(render)
+  end
+
+  File.open('circleci.html', "w+") do |f|
+    render = ERB.new(File.read("circleci_status.html.erb")).result
     f.write(render)
   end
 end
