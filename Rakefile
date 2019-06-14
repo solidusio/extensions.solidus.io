@@ -41,7 +41,7 @@ PROJECTS = {
   'boomerdigital/solidus_avatax_certified'          => %w[master v2.1],
 
   # Marketplace
-  'solidusio/solidus_multi_domain'                  => %w[master],
+  'solidusio-contrib/solidus_multi_domain'          => %w[master],
 
   # Product/Variant Customization
   'solidusio/solidus_asset_variant_options'         => %w[master],
