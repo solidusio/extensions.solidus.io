@@ -11,79 +11,79 @@ OLD_VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3]
 VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3 v2.4 v2.5 v2.6 v2.7 v2.8 master]
 PROJECTS = {
   # Auth
-  'solidus_auth_devise' => { org: 'solidusio', branches: %w[master], ci: :circleci },
-  'solidus_social' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_user_roles' => { org: 'boomerdigital', branches: %w[master], ci: :travis },
+  'solidus_auth_devise' => { org: 'solidusio', ci: :circleci },
+  'solidus_social' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_user_roles' => { org: 'boomerdigital', ci: :travis },
 
   # Payments
-  'solidus_gateway' => { org: 'solidusio', branches: %w[master], ci: :travis },
-  'solidus_stripe' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_braintree' => { org: 'solidusio', branches: %w[master], ci: :travis },
-  'solidus_paypal_braintree' => { org: 'solidusio', branches: %w[master], ci: :travis },
-  'solidus_affirm' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_signifyd' => { org: 'solidusio', branches: %w[master], ci: :travis },
-  'solidus_amazon_payments' => { org: 'boomerdigital', branches: %w[master], ci: :travis },
-  'solidus_subscriptions' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
+  'solidus_gateway' => { org: 'solidusio', ci: :travis },
+  'solidus_stripe' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_braintree' => { org: 'solidusio', ci: :travis },
+  'solidus_paypal_braintree' => { org: 'solidusio', ci: :travis },
+  'solidus_affirm' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_signifyd' => { org: 'solidusio', ci: :travis },
+  'solidus_amazon_payments' => { org: 'boomerdigital', ci: :travis },
+  'solidus_subscriptions' => { org: 'solidusio-contrib', ci: :travis },
 
   # Shipping
-  'solidus_easypost' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_active_shipping' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_shipstation' => { org: 'boomerdigital', branches: %w[master], ci: :travis },
+  'solidus_easypost' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_active_shipping' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_shipstation' => { org: 'boomerdigital', ci: :travis },
 
   # I18n
-  'solidus_i18n' => { org: 'solidusio', branches: %w[master], ci: :travis },
-  'solidus_globalize' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
+  'solidus_i18n' => { org: 'solidusio', ci: :travis },
+  'solidus_globalize' => { org: 'solidusio-contrib', ci: :travis },
 
   # Frontend enhancements
-  'solidus_customer_images' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
+  'solidus_customer_images' => { org: 'solidusio-contrib', ci: :travis },
 
   # Taxes
-  'solidus_avatax' => { org: 'solidusio', branches: %w[master], ci: :travis },
-  'solidus_tax_cloud' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
+  'solidus_avatax' => { org: 'solidusio', ci: :travis },
+  'solidus_tax_cloud' => { org: 'solidusio-contrib', ci: :travis },
   'solidus_avatax_certified' => { org: 'boomerdigital', branches: %w[master v2.1], ci: :travis },
 
   # Marketplace
-  'solidus_multi_domain' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
+  'solidus_multi_domain' => { org: 'solidusio-contrib', ci: :travis },
 
   # Product and Variant Customization
-  'solidus_asset_variant_options' => { org: 'solidusio', branches: %w[master], ci: :travis },
-  'solidus_related_products' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_product_assembly' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_editor' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_email_to_friend' => { org: 'boomerdigital', branches: %w[master], ci: :travis },
-  'solidus_flexi_variants' => { org: 'boomerdigital', branches: %w[master], ci: :travis },
+  'solidus_asset_variant_options' => { org: 'solidusio', ci: :travis },
+  'solidus_related_products' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_product_assembly' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_editor' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_email_to_friend' => { org: 'boomerdigital', ci: :travis },
+  'solidus_flexi_variants' => { org: 'boomerdigital', ci: :travis },
 
   # Search
-  'solidus_elastic_product' => { org: 'boomerdigital', branches: %w[master], ci: :travis },
+  'solidus_elastic_product' => { org: 'boomerdigital', ci: :travis },
 
   # Marketing
-  'solidus_product_feed' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_sitemap' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_trackers' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_seo' => { org: 'karmakatahdin', branches: %w[master], ci: :travis },
+  'solidus_product_feed' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_sitemap' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_trackers' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_seo' => { org: 'karmakatahdin', ci: :travis },
 
   # Promo
-  'solidus_volume_pricing' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_wishlist' => { org: 'boomerdigital', branches: %w[master], ci: :travis },
+  'solidus_volume_pricing' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_wishlist' => { org: 'boomerdigital', ci: :travis },
 
   # Admin
-  'solidus_prototypes' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_print_invoice' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_comments' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_reports' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_simple_dash' => { org: 'magma-labs', branches: %w[master], ci: :travis },
+  'solidus_prototypes' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_print_invoice' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_comments' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_reports' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_simple_dash' => { org: 'magma-labs', ci: :travis },
 
   # Log
-  'solidus_papertrail' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_log_viewer' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
+  'solidus_papertrail' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_log_viewer' => { org: 'solidusio-contrib', ci: :travis },
 
   # CMS
-  'solidus_static_content' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
+  'solidus_static_content' => { org: 'solidusio-contrib', ci: :travis },
 
   # Legacy (extracted from core)
-  'solidus_expedited_exchanges' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
-  'solidus_legacy_return_authorizations' => { org: 'solidusio', branches: %w[master], ci: :travis },
-  'solidus_legacy_stock_system' => { org: 'solidusio-contrib', branches: %w[master], ci: :travis },
+  'solidus_expedited_exchanges' => { org: 'solidusio-contrib', ci: :travis },
+  'solidus_legacy_return_authorizations' => { org: 'solidusio', ci: :travis },
+  'solidus_legacy_stock_system' => { org: 'solidusio-contrib', ci: :travis },
 }.map do |repo, options|
   case options[:ci]
   when :travis

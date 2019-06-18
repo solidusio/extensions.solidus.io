@@ -9,10 +9,10 @@ module SolidusExtensions
       include ERB::Util
       attr_reader :org, :repo
 
-      def initialize(org, repo, branches = ['master'])
+      def initialize(org, repo, branches = nil)
         @org = org
         @repo = repo
-        @branches = branches
+        @branches = branches || ['master']
       end
 
       def github_url
