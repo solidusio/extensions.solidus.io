@@ -1,6 +1,7 @@
 require 'travis'
 require 'forwardable'
 require 'cgi'
+require 'erb'
 
 module SolidusExtensions
   BRANCH_REGEX = /\Amaster\Z|\Av\d+.\d+\Z/.freeze
@@ -60,6 +61,7 @@ module SolidusExtensions
     end
   end
   class Project
+    include ERB::Util
     attr_reader :name
 
     def initialize(name, branches=['master'])
@@ -115,6 +117,46 @@ module SolidusExtensions
       }
       r = session.post("/repo/#{CGI.escape(name)}/requests", request: request)
       pp r
+    end
+
+    def render
+      ERB.new(template).result(binding)
+    end
+
+    def template
+      %{
+        <% branches.each_with_index do |branch, i| %>
+          <tr>
+            <% if i == 0 %>
+              <th class="name" rowspan="<%= branches.size %>">
+                <a href="<%= github_url %>"><%= shortname %></a>
+              </th>
+            <% end %>
+            <td><%= branch.name %></td>
+            <% VERSIONS.each do |version| %>
+              <%
+                build = branch.last_build
+                jobs = branch.last_build.jobs_for(solidus_version: version)
+                classes = ["status"]
+                classes << "hide-old" if OLD_VERSIONS.include?(version)
+                classes = classes.join(" ")
+
+                started_at = jobs.map(&:started_at).min
+                finished_at = jobs.map(&:finished_at).max
+              %>
+              <% if jobs.none? %>
+                <td class="<%= classes %> unsupported"></td>
+              <% elsif jobs.any?(&:pending?) %>
+                <td class="<%= classes %> pending" title="started building at <%= started_at %>"><a href="<%= build.url %>">pending</a></td>
+              <% elsif jobs.all?(&:passed?) %>
+                <td class="<%= classes %> success" title="passed at <%= finished_at %>"><a href="<%= build.url %>">passed</a></td>
+              <% else %>
+                <td class="<%= classes %> failed" title="failed at <%= finished_at %>"><a href="<%= build.url %>">failed</a></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      }
     end
   end
 end
