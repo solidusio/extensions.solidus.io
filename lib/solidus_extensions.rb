@@ -62,10 +62,12 @@ module SolidusExtensions
   end
   class Project
     include ERB::Util
-    attr_reader :name
+    attr_reader :name, :org, :repo
 
-    def initialize(name, branches=['master'])
-      @name = name
+    def initialize(org, repo, branches = ['master'])
+      @name = [org, repo].join('/')
+      @org = org
+      @repo = repo
       @branches = branches
     end
 

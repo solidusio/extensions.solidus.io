@@ -87,8 +87,7 @@ PROJECTS = {
 }.map do |repo, options|
   case options[:ci]
   when :travis
-    full_repo_path = [options[:org], repo].join('/')
-    SolidusExtensions::Project.new(full_repo_path, options[:branches])
+    SolidusExtensions::Project.new(options[:org], repo, options[:branches])
   when :circleci
     SolidusExtensions::CircleCi::Project.new(options[:org], repo, options[:branches])
   end
