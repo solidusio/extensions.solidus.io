@@ -39,14 +39,6 @@ module SolidusExtensions
     def jobs_by_version
       jobs.group_by(&:solidus_version)
     end
-
-    def state_by_version
-      jobs.group_by(&:solidus_version).map do |(version, builds)|
-        [version, builds.all?(&:passed?)]
-      end.to_h
-    rescue Travis::Client::Error
-      {}
-    end
   end
   class Branch
     attr_reader :project, :name
@@ -101,10 +93,6 @@ module SolidusExtensions
 
     def last_build
       Build.new(self, travis_repo.branch('master'))
-    end
-
-    def state_by_version
-      last_build.state_by_version
     end
 
     def retrigger

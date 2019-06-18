@@ -34,10 +34,6 @@ module SolidusExtensions
         circleci_project.settings.success?
       end
 
-      def state_by_version
-        # last_build.state_by_version
-      end
-
       def retrigger
         # noop
       end

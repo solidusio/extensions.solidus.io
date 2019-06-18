@@ -100,24 +100,6 @@ task :retrigger do
   end
 end
 
-task :status do
-  PROJECTS.each do |project|
-    puts project.name
-    project.branches.each do |branch|
-      puts "  #{branch.name}"
-      branch.last_build.state_by_version.each do |version, state|
-        puts "    #{version} #{state}"
-      end
-    end
-  end
-end
-
-task :status_html do
-  require 'erb'
-  puts ERB.new(File.read("status.html.erb")).result
-end
-
-
 task :build do
   require 'erb'
 
