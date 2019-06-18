@@ -62,25 +62,24 @@ module SolidusExtensions
   end
   class Project
     include ERB::Util
-    attr_reader :name, :org, :repo
+    attr_reader :org, :repo
 
     def initialize(org, repo, branches = ['master'])
-      @name = [org, repo].join('/')
       @org = org
       @repo = repo
       @branches = branches
     end
 
+    def fullname
+      [org, repo].join("/")
+    end
+
     def github_url
-      "https://github.com/#{name}"
+      "https://github.com/#{fullname}"
     end
 
     def travis_url
-      "https://travis-ci.org/#{name}"
-    end
-
-    def shortname
-      name[/\/(.*)/, 1]
+      "https://travis-ci.org/#{fullname}"
     end
 
     def branches
@@ -90,7 +89,7 @@ module SolidusExtensions
     end
 
     def travis_repo
-      Travis::Repository.find(name)
+      Travis::Repository.find(fullname)
     end
 
     def exists?
@@ -117,7 +116,7 @@ module SolidusExtensions
         branch: 'master',
         message: "Automatic retrigger"
       }
-      r = session.post("/repo/#{CGI.escape(name)}/requests", request: request)
+      r = session.post("/repo/#{CGI.escape(fullname)}/requests", request: request)
       pp r
     end
 
@@ -131,7 +130,7 @@ module SolidusExtensions
           <tr>
             <% if i == 0 %>
               <th class="name" rowspan="<%= branches.size %>">
-                <a href="<%= github_url %>"><%= shortname %></a>
+                <a href="<%= github_url %>"><%= repo %></a>
               </th>
             <% end %>
             <td><%= branch.name %></td>
