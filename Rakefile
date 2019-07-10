@@ -1,89 +1,96 @@
 $LOAD_PATH << File.expand_path('../lib', __FILE__)
 
 require 'solidus_extensions'
+require 'circleci_solidus_extensions'
 require 'pry'
 
 Travis.access_token = ENV['TRAVIS_TOKEN']
+CircleCi.configure { |config| config.token = ENV['CIRCLECI_TOKEN'] }
 
 OLD_VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3]
 VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3 v2.4 v2.5 v2.6 v2.7 v2.8 master]
 PROJECTS = {
   # Auth
-  'solidusio/solidus_auth_devise'                   => %w[master],
-  'solidusio-contrib/solidus_social'                => %w[master],
-  'boomerdigital/solidus_user_roles'                => %w[master],
+  'solidus_auth_devise' => { org: 'solidusio', ci: :circleci },
+  'solidus_social' => { org: 'solidusio-contrib' },
+  'solidus_user_roles' => { org: 'boomerdigital' },
 
   # Payments
-  'solidusio/solidus_gateway'                       => %w[master],
-  'solidusio-contrib/solidus_stripe'                => %w[master],
-  'solidusio/solidus_braintree'                     => %w[master],
-  'solidusio/solidus_paypal_braintree'              => %w[master],
-  'solidusio-contrib/solidus_affirm'                => %w[master],
-  'solidusio/solidus_signifyd'                      => %w[master],
-  'boomerdigital/solidus_amazon_payments'           => %w[master],
-  'solidusio-contrib/solidus_subscriptions'         => %w[master],
+  'solidus_gateway' => { org: 'solidusio' },
+  'solidus_stripe' => { org: 'solidusio-contrib' },
+  'solidus_braintree' => { org: 'solidusio' },
+  'solidus_paypal_braintree' => { org: 'solidusio' },
+  'solidus_affirm' => { org: 'solidusio-contrib' },
+  'solidus_signifyd' => { org: 'solidusio' },
+  'solidus_amazon_payments' => { org: 'boomerdigital' },
+  'solidus_subscriptions' => { org: 'solidusio-contrib' },
 
   # Shipping
-  'solidusio-contrib/solidus_easypost'              => %w[master],
-  'solidusio-contrib/solidus_active_shipping'       => %w[master],
-  'boomerdigital/solidus_shipstation'               => %w[master],
+  'solidus_easypost' => { org: 'solidusio-contrib' },
+  'solidus_active_shipping' => { org: 'solidusio-contrib' },
+  'solidus_shipstation' => { org: 'boomerdigital' },
 
   # I18n
-  'solidusio/solidus_i18n'                          => %w[master],
-  'solidusio-contrib/solidus_globalize'             => %w[master],
+  'solidus_i18n' => { org: 'solidusio' },
+  'solidus_globalize' => { org: 'solidusio-contrib' },
 
   # Frontend enhancements
-  'solidusio-contrib/solidus_customer_images'       => %w[master],
+  'solidus_customer_images' => { org: 'solidusio-contrib' },
 
   # Taxes
-  'solidusio/solidus_avatax'                        => %w[master],
-  'solidusio-contrib/solidus_tax_cloud'             => %w[master],
-  'boomerdigital/solidus_avatax_certified'          => %w[master v2.1],
+  'solidus_avatax' => { org: 'solidusio' },
+  'solidus_tax_cloud' => { org: 'solidusio-contrib' },
+  'solidus_avatax_certified' => { org: 'boomerdigital', branches: %w[master v2.1] },
 
   # Marketplace
-  'solidusio-contrib/solidus_multi_domain'          => %w[master],
+  'solidus_multi_domain' => { org: 'solidusio-contrib' },
 
-  # Product/Variant Customization
-  'solidusio/solidus_asset_variant_options'         => %w[master],
-  'solidusio-contrib/solidus_related_products'      => %w[master],
-  'solidusio-contrib/solidus_product_assembly'      => %w[master],
-  'solidusio-contrib/solidus_editor'                => %w[master],
-  'boomerdigital/solidus_email_to_friend'           => %w[master],
-  'boomerdigital/solidus_flexi_variants'            => %w[master],
+  # Product and Variant Customization
+  'solidus_asset_variant_options' => { org: 'solidusio' },
+  'solidus_related_products' => { org: 'solidusio-contrib' },
+  'solidus_product_assembly' => { org: 'solidusio-contrib' },
+  'solidus_editor' => { org: 'solidusio-contrib' },
+  'solidus_email_to_friend' => { org: 'boomerdigital' },
+  'solidus_flexi_variants' => { org: 'boomerdigital' },
 
   # Search
-  'boomerdigital/solidus_elastic_product'           => %w[master],
+  'solidus_elastic_product' => { org: 'boomerdigital' },
 
   # Marketing
-  'solidusio-contrib/solidus_product_feed'          => %w[master],
-  'solidusio-contrib/solidus_sitemap'               => %w[master],
-  'solidusio-contrib/solidus_trackers'              => %w[master],
-  'karmakatahdin/solidus_seo'                       => %w[master],
+  'solidus_product_feed' => { org: 'solidusio-contrib' },
+  'solidus_sitemap' => { org: 'solidusio-contrib' },
+  'solidus_trackers' => { org: 'solidusio-contrib' },
+  # 'solidus_seo' => { org: 'karmakatahdin' },
 
   # Promo
-  'solidusio-contrib/solidus_volume_pricing'        => %w[master],
-  'boomerdigital/solidus_wishlist'                  => %w[master],
+  'solidus_volume_pricing' => { org: 'solidusio-contrib' },
+  'solidus_wishlist' => { org: 'boomerdigital' },
 
   # Admin
-  'solidusio-contrib/solidus_prototypes'            => %w[master],
-  'solidusio-contrib/solidus_print_invoice'         => %w[master],
-  'solidusio-contrib/solidus_comments'              => %w[master],
-  'solidusio-contrib/solidus_reports'               => %w[master],
-  'magma-labs/solidus_simple_dash'                  => %w[master],
+  'solidus_prototypes' => { org: 'solidusio-contrib' },
+  'solidus_print_invoice' => { org: 'solidusio-contrib' },
+  'solidus_comments' => { org: 'solidusio-contrib' },
+  'solidus_reports' => { org: 'solidusio-contrib' },
+  'solidus_simple_dash' => { org: 'magma-labs' },
 
   # Log
-  'solidusio-contrib/solidus_papertrail'            => %w[master],
-  'solidusio-contrib/solidus_log_viewer'            => %w[master],
+  'solidus_papertrail' => { org: 'solidusio-contrib' },
+  'solidus_log_viewer' => { org: 'solidusio-contrib' },
 
   # CMS
-  'solidusio-contrib/solidus_static_content'        => %w[master],
+  'solidus_static_content' => { org: 'solidusio-contrib' },
 
   # Legacy (extracted from core)
-  'solidusio-contrib/solidus_expedited_exchanges'   => %w[master],
-  'solidusio/solidus_legacy_return_authorizations'  => %w[master],
-  'solidusio-contrib/solidus_legacy_stock_system'   => %w[master],
-}.map do |name, branches|
-  SolidusExtensions::Project.new(name, branches)
+  'solidus_expedited_exchanges' => { org: 'solidusio-contrib' },
+  'solidus_legacy_return_authorizations' => { org: 'solidusio' },
+  'solidus_legacy_stock_system' => { org: 'solidusio-contrib' },
+}.map do |repo, options|
+  case options[:ci]
+  when :circleci
+    SolidusExtensions::CircleCi::Project.new(options[:org], repo, options[:branches])
+  else
+    SolidusExtensions::Project.new(options[:org], repo, options[:branches])
+  end
 end.select(&:exists?)
 
 task :retrigger do
@@ -91,23 +98,6 @@ task :retrigger do
     next unless project.name =~ /\Asolidusio/
     project.retrigger
   end
-end
-
-task :status do
-  PROJECTS.each do |project|
-    puts project.name
-    project.branches.each do |branch|
-      puts "  #{branch.name}"
-      branch.last_build.state_by_version.each do |version, state|
-        puts "    #{version} #{state}"
-      end
-    end
-  end
-end
-
-task :status_html do
-  require 'erb'
-  puts ERB.new(File.read("status.html.erb")).result
 end
 
 task :build do

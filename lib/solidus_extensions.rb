@@ -1,6 +1,7 @@
 require 'travis'
 require 'forwardable'
 require 'cgi'
+require 'erb'
 
 module SolidusExtensions
   BRANCH_REGEX = /\Amaster\Z|\Av\d+.\d+\Z/.freeze
@@ -38,14 +39,6 @@ module SolidusExtensions
     def jobs_by_version
       jobs.group_by(&:solidus_version)
     end
-
-    def state_by_version
-      jobs.group_by(&:solidus_version).map do |(version, builds)|
-        [version, builds.all?(&:passed?)]
-      end.to_h
-    rescue Travis::Client::Error
-      {}
-    end
   end
   class Branch
     attr_reader :project, :name
@@ -60,23 +53,25 @@ module SolidusExtensions
     end
   end
   class Project
-    attr_reader :name
+    include ERB::Util
+    attr_reader :org, :repo
 
-    def initialize(name, branches=['master'])
-      @name = name
-      @branches = branches
+    def initialize(org, repo, branches = nil)
+      @org = org
+      @repo = repo
+      @branches = branches || ['master']
+    end
+
+    def fullname
+      [org, repo].join("/")
     end
 
     def github_url
-      "https://github.com/#{name}"
+      "https://github.com/#{fullname}"
     end
 
     def travis_url
-      "https://travis-ci.org/#{name}"
-    end
-
-    def shortname
-      name[/\/(.*)/, 1]
+      "https://travis-ci.org/#{fullname}"
     end
 
     def branches
@@ -86,7 +81,7 @@ module SolidusExtensions
     end
 
     def travis_repo
-      Travis::Repository.find(name)
+      Travis::Repository.find(fullname)
     end
 
     def exists?
@@ -100,10 +95,6 @@ module SolidusExtensions
       Build.new(self, travis_repo.branch('master'))
     end
 
-    def state_by_version
-      last_build.state_by_version
-    end
-
     def retrigger
       session = Travis::Client.new
       session.access_token = Travis.access_token
@@ -113,8 +104,48 @@ module SolidusExtensions
         branch: 'master',
         message: "Automatic retrigger"
       }
-      r = session.post("/repo/#{CGI.escape(name)}/requests", request: request)
+      r = session.post("/repo/#{CGI.escape(fullname)}/requests", request: request)
       pp r
+    end
+
+    def render
+      ERB.new(template).result(binding)
+    end
+
+    def template
+      %{
+        <% branches.each_with_index do |branch, i| %>
+          <tr>
+            <% if i == 0 %>
+              <th class="name" rowspan="<%= branches.size %>">
+                <a href="<%= github_url %>"><%= repo %></a>
+              </th>
+            <% end %>
+            <td><%= branch.name %></td>
+            <% VERSIONS.each do |version| %>
+              <%
+                build = branch.last_build
+                jobs = branch.last_build.jobs_for(solidus_version: version)
+                classes = ["status"]
+                classes << "hide-old" if OLD_VERSIONS.include?(version)
+                classes = classes.join(" ")
+
+                started_at = jobs.map(&:started_at).min
+                finished_at = jobs.map(&:finished_at).max
+              %>
+              <% if jobs.none? %>
+                <td class="<%= classes %> unsupported"></td>
+              <% elsif jobs.any?(&:pending?) %>
+                <td class="<%= classes %> pending" title="started building at <%= started_at %>"><a href="<%= build.url %>">pending</a></td>
+              <% elsif jobs.all?(&:passed?) %>
+                <td class="<%= classes %> success" title="passed at <%= finished_at %>"><a href="<%= build.url %>">passed</a></td>
+              <% else %>
+                <td class="<%= classes %> failed" title="failed at <%= finished_at %>"><a href="<%= build.url %>">failed</a></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      }
     end
   end
 end
