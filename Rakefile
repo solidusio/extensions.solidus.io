@@ -23,7 +23,7 @@ PROJECTS = {
   'solidus_affirm' => { org: 'solidusio-contrib' },
   'solidus_signifyd' => { org: 'solidusio' },
   'solidus_amazon_payments' => { org: 'boomerdigital' },
-  'solidus_subscriptions' => { org: 'solidusio-contrib' },
+  'solidus_subscriptions' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Shipping
   'solidus_easypost' => { org: 'solidusio-contrib' },
@@ -58,7 +58,7 @@ PROJECTS = {
 
   # Marketing
   'solidus_product_feed' => { org: 'solidusio-contrib' },
-  'solidus_sitemap' => { org: 'solidusio-contrib' },
+  'solidus_sitemap' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_trackers' => { org: 'solidusio-contrib' },
   # 'solidus_seo' => { org: 'karmakatahdin' },
 
