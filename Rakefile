@@ -17,7 +17,7 @@ PROJECTS = {
 
   # Payments
   'solidus_gateway' => { org: 'solidusio' },
-  'solidus_stripe' => { org: 'solidusio-contrib' },
+  'solidus_stripe' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_braintree' => { org: 'solidusio' },
   'solidus_paypal_braintree' => { org: 'solidusio' },
   'solidus_affirm' => { org: 'solidusio-contrib' },
