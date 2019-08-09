@@ -45,7 +45,7 @@ PROJECTS = {
   # Product and Variant Customization
   'solidus_asset_variant_options' => { org: 'solidusio' },
   'solidus_related_products' => { org: 'solidusio-contrib' },
-  'solidus_product_assembly' => { org: 'solidusio-contrib' },
+  'solidus_product_assembly' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_editor' => { org: 'solidusio-contrib' },
   'solidus_email_to_friend' => { org: 'boomerdigital' },
   'solidus_flexi_variants' => { org: 'boomerdigital' },
