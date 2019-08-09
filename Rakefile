@@ -52,6 +52,7 @@ PROJECTS = {
 
   # Search
   'solidus_elastic_product' => { org: 'boomerdigital' },
+  'solidus_searchkick' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Marketing
   'solidus_product_feed' => { org: 'solidusio-contrib' },
