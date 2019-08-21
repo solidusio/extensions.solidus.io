@@ -34,9 +34,6 @@ PROJECTS = {
   'solidus_i18n' => { org: 'solidusio' },
   'solidus_globalize' => { org: 'solidusio-contrib' },
 
-  # Frontend enhancements
-  'solidus_customer_images' => { org: 'solidusio-contrib' },
-
   # Taxes
   'solidus_avatax' => { org: 'solidusio' },
   'solidus_tax_cloud' => { org: 'solidusio-contrib' },
