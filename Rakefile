@@ -31,7 +31,7 @@ PROJECTS = {
   'solidus_shipstation' => { org: 'boomerdigital' },
 
   # I18n
-  'solidus_i18n' => { org: 'solidusio' },
+  # 'solidus_i18n' => { org: 'solidusio' },
   'solidus_globalize' => { org: 'solidusio-contrib' },
 
   # Taxes
