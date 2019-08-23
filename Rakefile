@@ -52,6 +52,7 @@ PROJECTS = {
 
   # Search
   'solidus_elastic_product' => { org: 'boomerdigital' },
+  'solidus_searchkick' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Marketing
   'solidus_product_feed' => { org: 'solidusio-contrib' },
@@ -66,7 +67,7 @@ PROJECTS = {
   # Admin
   'solidus_prototypes' => { org: 'solidusio-contrib' },
   'solidus_print_invoice' => { org: 'solidusio-contrib' },
-  'solidus_comments' => { org: 'solidusio-contrib' },
+  'solidus_comments' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_reports' => { org: 'solidusio-contrib' },
   'solidus_simple_dash' => { org: 'magma-labs' },
 
@@ -75,7 +76,7 @@ PROJECTS = {
   'solidus_log_viewer' => { org: 'solidusio-contrib' },
 
   # CMS
-  'solidus_static_content' => { org: 'solidusio-contrib' },
+  'solidus_static_content' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Legacy (extracted from core)
   'solidus_expedited_exchanges' => { org: 'solidusio-contrib' },
