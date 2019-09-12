@@ -109,6 +109,7 @@ module SolidusExtensions
     end
 
     def render
+      puts "Rendering #{org}⁄#{repo}"
       ERB.new(template).result(binding)
     end
 
