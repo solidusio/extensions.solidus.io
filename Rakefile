@@ -19,6 +19,7 @@ PROJECTS = {
   'solidus_stripe' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_braintree' => { org: 'solidusio' },
   'solidus_paypal_braintree' => { org: 'solidusio' },
+  'solidus_paypal_express' => { org: 'solidusio-contrib' },
   'solidus_affirm' => { org: 'solidusio-contrib' },
   'solidus_signifyd' => { org: 'solidusio' },
   'solidus_amazon_payments' => { org: 'boomerdigital' },
@@ -46,12 +47,15 @@ PROJECTS = {
   'solidus_editor' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_email_to_friend' => { org: 'boomerdigital' },
   'solidus_flexi_variants' => { org: 'boomerdigital' },
+  'solidus_handling_fees' => { org: 'solidusio-contrib' },
 
   # Search
   'solidus_elastic_product' => { org: 'boomerdigital' },
   'solidus_searchkick' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Marketing
+  'solidus_abandoned_carts' => { org: 'solidusio-contrib' },
+  'solidus_recently_viewed' => { org: 'solidusio-contrib' },
   'solidus_product_feed' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_sitemap' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_trackers' => { org: 'solidusio-contrib', ci: :circleci },
@@ -74,6 +78,13 @@ PROJECTS = {
 
   # CMS
   'solidus_static_content' => { org: 'solidusio-contrib', ci: :circleci },
+
+  # Law compliance
+  'solidus_gdpr' => { org: 'solidusio-contrib', ci: :circleci },
+
+  # Misc
+  'solidus_geocoding' => { org: 'solidusio-contrib' },
+  'solidus_reviews' => { org: 'solidusio-contrib' },
 
   # Legacy (extracted from core)
   'solidus_expedited_exchanges' => { org: 'solidusio-contrib', ci: :circleci },
