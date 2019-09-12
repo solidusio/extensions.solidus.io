@@ -16,7 +16,6 @@ PROJECTS = {
   'solidus_user_roles' => { org: 'boomerdigital' },
 
   # Payments
-  'solidus_gateway' => { org: 'solidusio' },
   'solidus_stripe' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_braintree' => { org: 'solidusio' },
   'solidus_paypal_braintree' => { org: 'solidusio' },
@@ -26,7 +25,6 @@ PROJECTS = {
   'solidus_subscriptions' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Shipping
-  'solidus_active_shipping' => { org: 'solidusio-contrib' },
   'solidus_easypost' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_shipstation' => { org: 'boomerdigital' },
 
@@ -35,7 +33,6 @@ PROJECTS = {
   'solidus_globalize' => { org: 'solidusio-contrib' },
 
   # Taxes
-  'solidus_avatax' => { org: 'solidusio' },
   'solidus_tax_cloud' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_avatax_certified' => { org: 'boomerdigital', branches: %w[master v2.1] },
 
@@ -79,8 +76,6 @@ PROJECTS = {
   'solidus_static_content' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Legacy (extracted from core)
-  'solidus_legacy_return_authorizations' => { org: 'solidusio' },
-  'solidus_legacy_stock_system' => { org: 'solidusio-contrib' },
   'solidus_expedited_exchanges' => { org: 'solidusio-contrib', ci: :circleci },
 }.map do |repo, options|
   case options[:ci]
