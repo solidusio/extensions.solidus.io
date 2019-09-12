@@ -61,8 +61,8 @@ module SolidusExtensions
                   classes << "hide-old" if OLD_VERSIONS.include?(version)
                   classes = classes.join(" ")
 
-                  started_at = steps.map(&:started_at).min
-                  finished_at = steps.map(&:finished_at).max
+                  started_at = steps.map(&:started_at).compact.min
+                  finished_at = steps.map(&:finished_at).compact.max
                 %>
                 <% if steps.none? %>
                   <td class="<%= classes %> unsupported"></td>
