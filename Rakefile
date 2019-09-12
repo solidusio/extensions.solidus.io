@@ -112,3 +112,9 @@ task :build do
     f.write(render)
   end
 end
+
+task :test_project do
+  project = PROJECTS.find { |p| p.repo == ENV['PROJECT'] }
+  project.render
+  puts "#{project.org}/#{project.repo} rendered successfully!"
+end
