@@ -20,10 +20,11 @@ PROJECTS = {
   'solidus_braintree' => { org: 'solidusio' },
   'solidus_paypal_braintree' => { org: 'solidusio' },
   'solidus_paypal_express' => { org: 'solidusio-contrib' },
-  'solidus_affirm' => { org: 'solidusio-contrib' },
-  'solidus_signifyd' => { org: 'solidusio' },
+  'solidus_affirm' => { org: 'solidusio-contrib', ci: :circleci },
+  'solidus_signifyd' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_amazon_payments' => { org: 'boomerdigital' },
   'solidus_subscriptions' => { org: 'solidusio-contrib', ci: :circleci },
+  'solidus_virtual_gift_card' => { org: 'solidusio-contrib' },
 
   # Shipping
   'solidus_easypost' => { org: 'solidusio-contrib', ci: :circleci },
@@ -41,21 +42,21 @@ PROJECTS = {
   'solidus_multi_domain' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Product and Variant Customization
-  'solidus_asset_variant_options' => { org: 'solidusio' },
+  'solidus_asset_variant_options' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_related_products' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_product_assembly' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_editor' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_email_to_friend' => { org: 'boomerdigital' },
   'solidus_flexi_variants' => { org: 'boomerdigital' },
-  'solidus_handling_fees' => { org: 'solidusio-contrib' },
+  'solidus_handling_fees' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Search
   'solidus_elastic_product' => { org: 'boomerdigital' },
   'solidus_searchkick' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Marketing
-  'solidus_abandoned_carts' => { org: 'solidusio-contrib' },
-  'solidus_recently_viewed' => { org: 'solidusio-contrib' },
+  'solidus_abandoned_carts' => { org: 'solidusio-contrib', ci: :circleci },
+  'solidus_recently_viewed' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_product_feed' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_sitemap' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_trackers' => { org: 'solidusio-contrib', ci: :circleci },
@@ -78,12 +79,13 @@ PROJECTS = {
 
   # CMS
   'solidus_static_content' => { org: 'solidusio-contrib', ci: :circleci },
+  'solidus_redirector' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Law compliance
   'solidus_gdpr' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Misc
-  'solidus_geocoding' => { org: 'solidusio-contrib' },
+  'solidus_geocoding' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_reviews' => { org: 'solidusio-contrib' },
 
   # Legacy (extracted from core)
