@@ -25,9 +25,11 @@ PROJECTS = {
   'solidus_amazon_payments' => { org: 'boomerdigital' },
   'solidus_subscriptions' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_virtual_gift_card' => { org: 'solidusio-contrib' },
+  'solidus_digital' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Shipping
   'solidus_easypost' => { org: 'solidusio-contrib', ci: :circleci },
+  'solidus_quiet_logistics' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_shipstation' => { org: 'boomerdigital' },
 
   # I18n
