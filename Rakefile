@@ -24,7 +24,7 @@ PROJECTS = {
   'solidus_signifyd' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_amazon_payments' => { org: 'boomerdigital' },
   'solidus_subscriptions' => { org: 'solidusio-contrib', ci: :circleci },
-  'solidus_virtual_gift_card' => { org: 'solidusio-contrib' },
+  'solidus_virtual_gift_card' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_digital' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Shipping
