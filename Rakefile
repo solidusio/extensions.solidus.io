@@ -24,13 +24,14 @@ PROJECTS = {
   'solidus_signifyd' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_amazon_payments' => { org: 'boomerdigital' },
   'solidus_subscriptions' => { org: 'solidusio-contrib', ci: :circleci },
-  'solidus_virtual_gift_card' => { org: 'solidusio-contrib' },
+  'solidus_virtual_gift_card' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_digital' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Shipping
   'solidus_easypost' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_quiet_logistics' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_shipstation' => { org: 'boomerdigital' },
+  'solidus_shipping_labeler' => { org: 'solidusio-contrib', ci: :circleci },
 
   # I18n
   # 'solidus_i18n' => { org: 'solidusio' },
@@ -88,7 +89,7 @@ PROJECTS = {
 
   # Misc
   'solidus_geocoding' => { org: 'solidusio-contrib', ci: :circleci },
-  'solidus_reviews' => { org: 'solidusio-contrib' },
+  'solidus_reviews' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Legacy (extracted from core)
   'solidus_expedited_exchanges' => { org: 'solidusio-contrib', ci: :circleci },
