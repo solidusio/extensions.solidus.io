@@ -88,7 +88,7 @@ PROJECTS = {
 
   # Misc
   'solidus_geocoding' => { org: 'solidusio-contrib', ci: :circleci },
-  'solidus_reviews' => { org: 'solidusio-contrib' },
+  'solidus_reviews' => { org: 'solidusio-contrib', ci: :circleci },
 
   # Legacy (extracted from core)
   'solidus_expedited_exchanges' => { org: 'solidusio-contrib', ci: :circleci },
