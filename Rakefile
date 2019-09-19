@@ -31,6 +31,7 @@ PROJECTS = {
   'solidus_easypost' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_quiet_logistics' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_shipstation' => { org: 'boomerdigital' },
+  'solidus_shipping_labeler' => { org: 'solidusio-contrib', ci: :circleci },
 
   # I18n
   # 'solidus_i18n' => { org: 'solidusio' },
