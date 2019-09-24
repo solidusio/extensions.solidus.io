@@ -70,6 +70,10 @@ module SolidusExtensions
       "https://github.com/#{fullname}"
     end
 
+    def org_image_url
+      "https://github.com/#{org}.png"
+    end
+
     def travis_url
       "https://travis-ci.org/#{fullname}"
     end
@@ -119,7 +123,10 @@ module SolidusExtensions
           <tr>
             <% if i == 0 %>
               <th class="name" rowspan="<%= branches.size %>">
-                <a href="<%= github_url %>"><%= repo %></a>
+                <a class= "project-link" href="<%= github_url %>">
+                  <img src="<%= org_image_url %>" />
+                  <%= repo %>
+                </a>
               </th>
             <% end %>
             <td><%= branch.name %></td>
