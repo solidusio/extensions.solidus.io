@@ -28,6 +28,13 @@ td, th {
 th.name {
   text-align: right;
 }
+.project-link {
+  white-space: nowrap;
+}
+.project-link img {
+  width: 15px;
+  vertical-align: middle;
+}
 .status {
   color: white;
   padding: 0;
