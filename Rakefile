@@ -7,7 +7,7 @@ require 'pry'
 Travis.access_token = ENV['TRAVIS_TOKEN']
 CircleCi.configure { |config| config.token = ENV['CIRCLECI_TOKEN'] }
 
-OLD_VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3 v2.4]
+OLD_VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3 v2.4 v2.5]
 VERSIONS = %W[v1.0 v1.1 v1.2 v1.3 v1.4 v2.0 v2.1 v2.2 v2.3 v2.4 v2.5 v2.6 v2.7 v2.8 v2.9 master]
 PROJECTS = {
   # Auth
