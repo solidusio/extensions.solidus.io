@@ -16,7 +16,7 @@ PROJECTS = {
   'solidus_user_roles' => { org: 'boomerdigital' },
 
   # Payments
-  'solidus_stripe' => { org: 'solidusio-contrib', ci: :circleci },
+  'solidus_stripe' => { org: 'solidusio', ci: :circleci },
   'solidus_braintree' => { org: 'solidusio', ci: :circleci },
   'solidus_paypal_braintree' => { org: 'solidusio', ci: :circleci },
   'solidus_paypal_express' => { org: 'solidusio-contrib' },
