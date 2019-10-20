@@ -64,7 +64,7 @@ PROJECTS = {
   'solidus_product_feed' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_sitemap' => { org: 'solidusio-contrib', ci: :circleci },
   'solidus_trackers' => { org: 'solidusio-contrib', ci: :circleci },
-  # 'solidus_seo' => { org: 'karmakatahdin' },
+  'solidus_seo' => { org: 'karmakatahdin' },
 
   # Promo
   'solidus_volume_pricing' => { org: 'solidusio-contrib', ci: :circleci },
